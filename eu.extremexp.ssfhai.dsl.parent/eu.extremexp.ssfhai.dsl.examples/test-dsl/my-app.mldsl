@@ -1,0 +1,50 @@
+app myapp;
+
+workflow w1 {
+	
+	data d1 {
+		path "myapp/data/sky.csv";
+		features "a,b,c,d";
+		target "e";
+	}
+	
+	network Simple {
+		layer fc1 (type=Input, outputSize=64);
+		layer fc2 (type=Linear, inputSize=64, outputSize=32);
+		
+		fc1 -> fc2;
+	}
+	
+	task load_db {
+		source "myapp/load_db.py";
+		param ds = d1;
+		
+	}
+	
+	task split_db {
+		source "myapp/split.py";
+		param trian_pc = 0.7;
+		param validation_pc = 0.1;
+		param test_pc = 0.2;
+		
+	}
+	
+	task train {
+		source "myapp/train.py";
+		param net = Simple;
+		param epochs = 100;
+		param lr = 0.001;
+		param optimizer = "Adam";
+	}
+	
+	task test {
+		source "myapp/test.py";
+		param net = Simple;
+		param 
+	}
+	
+
+	
+	load_db -> split_db -> train -> test ;
+}
+

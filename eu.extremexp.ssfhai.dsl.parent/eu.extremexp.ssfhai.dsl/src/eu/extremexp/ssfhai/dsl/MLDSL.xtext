@@ -1,0 +1,90 @@
+grammar eu.extremexp.ssfhai.dsl.MLDSL with org.eclipse.xtext.common.Terminals
+
+generate mLDSL "http://www.extremexp.eu/ssfhai/dsl/MLDSL"
+
+Model:
+	'app' name=ID ';' 
+	workflows += Workflow*
+
+;
+	
+Workflow:
+	'workflow' name=ID '{'
+		(
+			tasks+=Task |
+			flows+=Flow	|
+			data+=Data	|
+			networks+=Network 
+		)*
+	'}'
+;
+
+Data:
+	'data' name=ID '{'
+			'path' path=STRING ';' & 'features' features=STRING ';' & 'target' target=STRING ';'
+		'}'
+		
+;
+
+Task:
+	'task' name=ID '{'
+		 (
+		 'source'source=STRING ';' |
+		   params+=Param
+		 
+	)*
+	'}'
+		
+;
+
+WorkflowEntinty:
+	Data | Task | Network
+;
+
+Param:
+	('param' name=ID '=' (paramValue=ParamValue) ';' )|
+	('param' name=ID '=' (networkValue=[WorkflowEntinty]) ';')
+;
+
+
+Flow:
+	sequenceStart = [Task] ('->' sequence+=[Task])+ ';' 
+;
+
+Network:
+	'network' name=ID  '{'
+		(
+			layers += Layer		|	
+			forwards += Forward
+			
+		)*
+	'}'
+;
+
+Layer:
+	'layer' name=ID ('(' options+= Option (',' options+= Option)* ')')? ';' 
+;
+
+Forward:
+	sequenceStart = [Layer] ('->' sequence+=[Layer])+ ';' 
+;
+
+enum LayerType:
+	Input | Linear | Sigmoid | BN | DropOut 
+;
+
+FLOAT :
+	dec=INT'.'per=INT
+;
+
+Option:
+	('type' '=' type = LayerType) 	|
+	('inputSize' '=' inputSize = INT) 	|
+	('outputSize' '=' outputSize = INT) |
+	('droputRate' '=' dropeoutRate = FLOAT)
+;
+ 
+ 
+ParamValue:
+	intValue=INT | floatValue=FLOAT | stringValue=STRING 
+;

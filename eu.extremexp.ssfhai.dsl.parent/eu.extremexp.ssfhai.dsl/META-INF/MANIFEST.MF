@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: eu.extremexp.ssfhai.dsl
+Bundle-ManifestVersion: 2
+Bundle-Name: eu.extremexp.ssfhai.dsl
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: eu.extremexp.ssfhai.dsl; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.19.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.40.0",
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.40.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: eu.extremexp.ssfhai.dsl.parser.antlr.internal,
+ eu.extremexp.ssfhai.dsl.mLDSL,
+ eu.extremexp.ssfhai.dsl.validation,
+ eu.extremexp.ssfhai.dsl,
+ eu.extremexp.ssfhai.dsl.serializer,
+ eu.extremexp.ssfhai.dsl.mLDSL.util,
+ eu.extremexp.ssfhai.dsl.scoping,
+ eu.extremexp.ssfhai.dsl.parser.antlr,
+ eu.extremexp.ssfhai.dsl.generator,
+ eu.extremexp.ssfhai.dsl.mLDSL.impl,
+ eu.extremexp.ssfhai.dsl.services
+Import-Package: org.apache.log4j
