@@ -28,11 +28,7 @@ Data:
 
 Task:
 	'task' name=ID '{'
-		 (
-		 'source'source=STRING ';' |
-		   params+=Param
-		 
-	)*
+		params+=Param*
 	'}'
 		
 ;
@@ -43,7 +39,7 @@ WorkflowEntinty:
 
 Param:
 	('param' name=ID '=' (paramValue=ParamValue) ';' )|
-	('param' name=ID '=' (networkValue=[WorkflowEntinty]) ';')
+	('param' name=ID '=' (entityValue=[WorkflowEntinty]) ';')
 ;
 
 

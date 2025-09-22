@@ -30,7 +30,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MLDSL.ecore#//Data/target"/>
     </genClasses>
     <genClasses ecoreClass="MLDSL.ecore#//Task">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MLDSL.ecore#//Task/source"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MLDSL.ecore#//Task/params"/>
     </genClasses>
     <genClasses ecoreClass="MLDSL.ecore#//WorkflowEntinty">
@@ -39,7 +38,7 @@
     <genClasses ecoreClass="MLDSL.ecore#//Param">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MLDSL.ecore#//Param/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MLDSL.ecore#//Param/paramValue"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MLDSL.ecore#//Param/networkValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MLDSL.ecore#//Param/entityValue"/>
     </genClasses>
     <genClasses ecoreClass="MLDSL.ecore#//Flow">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MLDSL.ecore#//Flow/sequenceStart"/>

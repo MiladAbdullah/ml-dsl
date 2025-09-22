@@ -23,7 +23,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//WorkflowEntinty">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//Param" containment="true"/>
   </eClassifiers>
@@ -34,7 +33,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="paramValue" eType="#//ParamValue"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="networkValue" eType="#//WorkflowEntinty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityValue" eType="#//WorkflowEntinty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Flow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceStart" eType="#//Task"/>

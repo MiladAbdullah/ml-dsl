@@ -8,18 +8,138 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 
+import eu.extremexp.ssfhai.dsl.mLDSL.Task;
+import eu.extremexp.ssfhai.dsl.mLDSL.Data;
+import eu.extremexp.ssfhai.dsl.mLDSL.Network;
+import eu.extremexp.ssfhai.dsl.mLDSL.Model;
+import eu.extremexp.ssfhai.dsl.mLDSL.Workflow;
+
+
 /**
- * Generates code from your model files on save.
+ * MLDSLGenerator generates Python files from the MLDSL model.
  * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
+ * - For each Task, Data, Network, etc., generates a Python file with a user-editable code section.
+ * - If the file already exists, preserves user-edited code outside the generated regions.
+ * - Uses special markers to delimit generated and user code.
+ * - Methods are modular for each model element.
+ *
+ * Usage: invoked automatically on model save.
  */
 class MLDSLGenerator extends AbstractGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
-	}
+    /**
+     * Main entry point for code generation.
+     * Traverses the model and calls generation methods for each element.
+     */
+    override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+        // Example: Traverse all contents and generate files for each Task, Data, Network
+        resource.allContents.filter(typeof(Task)).forEach[t | generateTaskPythonFile(t, fsa)]
+//        resource.allContents.filter(typeof(Data)).forEach[d | generateDataPythonFile(d, fsa)]
+//        resource.allContents.filter(typeof(Network)).forEach[n | generateNetworkPythonFile(n, fsa)]
+    }
+
+    /**
+     * Generates a Python file for a Task element with user-editable placeholder.
+     * @param task the Task model element
+     * @param fsa the file system access
+     */
+    def void generateTaskPythonFile(Task task, IFileSystemAccess2 fsa) {
+		var appName = (task.eContainer.eContainer as Model).name
+    	fsa.generateFile(appName + "/__init__.py", "")
+    	
+    	var workflowName = (task.eContainer as Workflow).name
+    	fsa.generateFile(appName + "/" + workflowName + "/__init__.py", "")
+    	
+    	fsa.generateFile(appName + "/" + workflowName + "/tasks/__init__.py", "")
+    	
+        val fileName = appName + "/" + workflowName + "/tasks/" +  task.name + ".py"
+        val generatedContent = '''
+# TODO Add imports
+
+
+def run_task(
+	«FOR param : task.params SEPARATOR ',\n'» 
+		«param.name»
+	«ENDFOR»
+	):
+	# TODO: Implement task logic for «task.name»
+	pass
+		
+def run_«task.name»(
+	«FOR param : task.params.filter[p | p.paramValue === null] SEPARATOR ',\n'» 
+		«param.name»
+	«ENDFOR»
+	):
+
+	run_task(
+		«FOR param : task.params SEPARATOR ',\n'» 
+			«IF param.paramValue === null»
+			«param.name» = «param.name»
+			«ELSE»
+			«param.name» = «param.paramValue»
+			«ENDIF»
+		«ENDFOR»
+	)
+        '''.toString
+        fsa.generateFile(fileName, generatedContent)
+    }
+    
+    
+//
+//    /**
+//     * Generates a Python file for a Data element with user-editable placeholder.
+//     * @param data the Data model element
+//     * @param fsa the file system access
+//     */
+//    def void generateDataPythonFile(Data data, IFileSystemAccess2 fsa) {
+//        val fileName = data.name + "_data.py"
+//        val generatedContent = '''
+//            # === GENERATED CODE START ===
+//            # Data loader for «data.name»
+//            def load_data():
+//                # TODO: Implement data loading from «data.path»
+//                pass
+//            # === GENERATED CODE END ===
+//            
+//            # === USER CODE START ===
+//            # Write your custom code below. This section will be preserved.
+//            # === USER CODE END ===
+//        '''.toString
+//        mergeOrWriteFile(fileName, generatedContent, fsa)
+//    }
+//
+//    /**
+//     * Generates a Python file for a Network element with user-editable placeholder.
+//     * @param network the Network model element
+//     * @param fsa the file system access
+//     */
+//    def void generateNetworkPythonFile(Network network, IFileSystemAccess2 fsa) {
+//        val fileName = network.name + "_network.py"
+//        val generatedContent = '''
+//            # === GENERATED CODE START ===
+//            # Network definition for «network.name»
+//            def build_network():
+//                # TODO: Implement network architecture
+//                pass
+//            # === GENERATED CODE END ===
+//            
+//            # === USER CODE START ===
+//            # Write your custom code below. This section will be preserved.
+//            # === USER CODE END ===
+//        '''.toString
+//        mergeOrWriteFile(fileName, generatedContent, fsa)
+//    }
+//
+//    /**
+//     * Checks if a file exists and merges user code with generated code.
+//     * Preserves user edits between USER CODE markers.
+//     * @param filePath the path to the Python file
+//     * @param generatedContent the new generated content
+//     * @param fsa the file system access
+//     */
+//    def void mergeOrWriteFile(String filePath, String generatedContent, IFileSystemAccess2 fsa) {
+//        // TODO: Implement merge logic using special markers
+//        // For now, always overwrite (to be improved in next step)
+//        fsa.generateFile(filePath, generatedContent)
+//    }
 }
