@@ -1,0 +1,84 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "mldsl",
+	"patterns": [
+		{
+			"include": "#entities"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#sl-comments"
+		},
+		{
+			"include": "#ml-comments"
+		},
+		{
+			"include": "#constants"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.mldsl",
+				"match": "\\b(implementation|dependency|define|configure|from|condition|exception|schema|event|type|default|range|enum|kind|as|metadata|description|intent|interaction|control)\\b"
+			},
+			{
+				"name": "keyword.operator.mldsl",
+				"match": "\\b(--\\>|-\\>|\\?-\\>)\\b"
+			}]
+		},
+		"entities": {
+			"patterns": [{
+				"name": "entity.name.function.mldsl",
+				"match": "\\b(workflow|task|app|experiment)\\b"
+			},
+			{
+				"name": "entity.name.type.mldsl",
+				"match": "\\b(data|param|metric|input|output|space)\\b"
+			},
+			{
+				"name":  "entity.name.tag.mldsl",
+				"match": "\\b(PARALLEL|EXCLUSIVE|INCLUSIVE|JOIN)-(END-)?[0-9]+\\b"
+			}]
+		},		
+		"sl-comments": {
+			"name": "comment.line.double-slash.mldsl",
+			"begin": "//",
+			"end":"\n"
+		},
+		"ml-comments": {
+			"name": "comment.block.mldsl",
+			"begin": "/\\*",
+			"end": "\\*/"
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name":  "constant.numeric.mldsl",
+					"match": "\\b(-)?[0-9]+\\b"
+				},
+				{
+					"name":  "constant.language.mldsl",
+					"match": "\\b(START|END|blob|primitive|struct|scalar|series|Integer|Boolean|String|Blob|strategy)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.mldsl",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.mldsl",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.mldsl"
+}
