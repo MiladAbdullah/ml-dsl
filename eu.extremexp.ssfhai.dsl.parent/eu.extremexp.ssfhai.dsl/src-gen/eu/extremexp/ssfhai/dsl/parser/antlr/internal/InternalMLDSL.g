@@ -472,57 +472,26 @@ ruleTask returns [EObject current=null]
 		}
 		(
 			(
-				otherlv_3='source'
 				{
-					newLeafNode(otherlv_3, grammarAccess.getTaskAccess().getSourceKeyword_3_0_0());
+					newCompositeNode(grammarAccess.getTaskAccess().getParamsParamParserRuleCall_3_0());
 				}
-				(
-					(
-						lv_source_4_0=RULE_STRING
-						{
-							newLeafNode(lv_source_4_0, grammarAccess.getTaskAccess().getSourceSTRINGTerminalRuleCall_3_0_1_0());
-						}
-						{
-							if ($current==null) {
-								$current = createModelElement(grammarAccess.getTaskRule());
-							}
-							setWithLastConsumed(
-								$current,
-								"source",
-								lv_source_4_0,
-								"org.eclipse.xtext.common.Terminals.STRING");
-						}
-					)
-				)
-				otherlv_5=';'
+				lv_params_3_0=ruleParam
 				{
-					newLeafNode(otherlv_5, grammarAccess.getTaskAccess().getSemicolonKeyword_3_0_2());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getTaskRule());
+					}
+					add(
+						$current,
+						"params",
+						lv_params_3_0,
+						"eu.extremexp.ssfhai.dsl.MLDSL.Param");
+					afterParserOrEnumRuleCall();
 				}
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTaskAccess().getParamsParamParserRuleCall_3_1_0());
-					}
-					lv_params_6_0=ruleParam
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getTaskRule());
-						}
-						add(
-							$current,
-							"params",
-							lv_params_6_0,
-							"eu.extremexp.ssfhai.dsl.MLDSL.Param");
-						afterParserOrEnumRuleCall();
-					}
-				)
 			)
 		)*
-		otherlv_7='}'
+		otherlv_4='}'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getTaskAccess().getRightCurlyBracketKeyword_4());
+			newLeafNode(otherlv_4, grammarAccess.getTaskAccess().getRightCurlyBracketKeyword_4());
 		}
 	)
 ;
@@ -631,7 +600,7 @@ ruleParam returns [EObject current=null]
 					}
 					otherlv_8=RULE_ID
 					{
-						newLeafNode(otherlv_8, grammarAccess.getParamAccess().getNetworkValueWorkflowEntintyCrossReference_1_3_0());
+						newLeafNode(otherlv_8, grammarAccess.getParamAccess().getEntityValueWorkflowEntintyCrossReference_1_3_0());
 					}
 				)
 			)
