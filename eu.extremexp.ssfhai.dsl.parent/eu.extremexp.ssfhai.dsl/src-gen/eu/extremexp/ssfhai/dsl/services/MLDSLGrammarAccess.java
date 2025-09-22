@@ -256,31 +256,19 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Group cGroup_3_0 = (Group)cAlternatives_3.eContents().get(0);
-		private final Keyword cSourceKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
-		private final Assignment cSourceAssignment_3_0_1 = (Assignment)cGroup_3_0.eContents().get(1);
-		private final RuleCall cSourceSTRINGTerminalRuleCall_3_0_1_0 = (RuleCall)cSourceAssignment_3_0_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3_0_2 = (Keyword)cGroup_3_0.eContents().get(2);
-		private final Assignment cParamsAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
-		private final RuleCall cParamsParamParserRuleCall_3_1_0 = (RuleCall)cParamsAssignment_3_1.eContents().get(0);
+		private final Assignment cParamsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cParamsParamParserRuleCall_3_0 = (RuleCall)cParamsAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//Task:
 		//    'task' name=ID '{'
-		//         (
-		//         'source'source=STRING ';' |
-		//           params+=Param
-		//    )*
+		//        params+=Param*
 		//    '}'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'task' name=ID '{'
-		//     (
-		//     'source'source=STRING ';' |
-		//       params+=Param
-		//)*
+		//    params+=Param*
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -296,32 +284,11 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//     (
-		//     'source'source=STRING ';' |
-		//       params+=Param
-		//)*
-		public Alternatives getAlternatives_3() { return cAlternatives_3; }
-		
-		//'source'source=STRING ';'
-		public Group getGroup_3_0() { return cGroup_3_0; }
-		
-		//'source'
-		public Keyword getSourceKeyword_3_0_0() { return cSourceKeyword_3_0_0; }
-		
-		//source=STRING
-		public Assignment getSourceAssignment_3_0_1() { return cSourceAssignment_3_0_1; }
-		
-		//STRING
-		public RuleCall getSourceSTRINGTerminalRuleCall_3_0_1_0() { return cSourceSTRINGTerminalRuleCall_3_0_1_0; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_3_0_2() { return cSemicolonKeyword_3_0_2; }
-		
-		//params+=Param
-		public Assignment getParamsAssignment_3_1() { return cParamsAssignment_3_1; }
+		//params+=Param*
+		public Assignment getParamsAssignment_3() { return cParamsAssignment_3; }
 		
 		//Param
-		public RuleCall getParamsParamParserRuleCall_3_1_0() { return cParamsParamParserRuleCall_3_1_0; }
+		public RuleCall getParamsParamParserRuleCall_3_0() { return cParamsParamParserRuleCall_3_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -366,19 +333,19 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		private final Assignment cNameAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_1_0 = (RuleCall)cNameAssignment_1_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
-		private final Assignment cNetworkValueAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
-		private final CrossReference cNetworkValueWorkflowEntintyCrossReference_1_3_0 = (CrossReference)cNetworkValueAssignment_1_3.eContents().get(0);
-		private final RuleCall cNetworkValueWorkflowEntintyIDTerminalRuleCall_1_3_0_1 = (RuleCall)cNetworkValueWorkflowEntintyCrossReference_1_3_0.eContents().get(1);
+		private final Assignment cEntityValueAssignment_1_3 = (Assignment)cGroup_1.eContents().get(3);
+		private final CrossReference cEntityValueWorkflowEntintyCrossReference_1_3_0 = (CrossReference)cEntityValueAssignment_1_3.eContents().get(0);
+		private final RuleCall cEntityValueWorkflowEntintyIDTerminalRuleCall_1_3_0_1 = (RuleCall)cEntityValueWorkflowEntintyCrossReference_1_3_0.eContents().get(1);
 		private final Keyword cSemicolonKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
 		
 		//Param:
 		//    ('param' name=ID '=' (paramValue=ParamValue) ';' )|
-		//    ('param' name=ID '=' (networkValue=[WorkflowEntinty]) ';')
+		//    ('param' name=ID '=' (entityValue=[WorkflowEntinty]) ';')
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//('param' name=ID '=' (paramValue=ParamValue) ';' )|
-		//('param' name=ID '=' (networkValue=[WorkflowEntinty]) ';')
+		//('param' name=ID '=' (entityValue=[WorkflowEntinty]) ';')
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//('param' name=ID '=' (paramValue=ParamValue) ';' )
@@ -405,7 +372,7 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//';'
 		public Keyword getSemicolonKeyword_0_4() { return cSemicolonKeyword_0_4; }
 		
-		//('param' name=ID '=' (networkValue=[WorkflowEntinty]) ';')
+		//('param' name=ID '=' (entityValue=[WorkflowEntinty]) ';')
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//'param'
@@ -420,14 +387,14 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 		//'='
 		public Keyword getEqualsSignKeyword_1_2() { return cEqualsSignKeyword_1_2; }
 		
-		//(networkValue=[WorkflowEntinty])
-		public Assignment getNetworkValueAssignment_1_3() { return cNetworkValueAssignment_1_3; }
+		//(entityValue=[WorkflowEntinty])
+		public Assignment getEntityValueAssignment_1_3() { return cEntityValueAssignment_1_3; }
 		
 		//[WorkflowEntinty]
-		public CrossReference getNetworkValueWorkflowEntintyCrossReference_1_3_0() { return cNetworkValueWorkflowEntintyCrossReference_1_3_0; }
+		public CrossReference getEntityValueWorkflowEntintyCrossReference_1_3_0() { return cEntityValueWorkflowEntintyCrossReference_1_3_0; }
 		
 		//ID
-		public RuleCall getNetworkValueWorkflowEntintyIDTerminalRuleCall_1_3_0_1() { return cNetworkValueWorkflowEntintyIDTerminalRuleCall_1_3_0_1; }
+		public RuleCall getEntityValueWorkflowEntintyIDTerminalRuleCall_1_3_0_1() { return cEntityValueWorkflowEntintyIDTerminalRuleCall_1_3_0_1; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_1_4() { return cSemicolonKeyword_1_4; }
@@ -984,10 +951,7 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//Task:
 	//    'task' name=ID '{'
-	//         (
-	//         'source'source=STRING ';' |
-	//           params+=Param
-	//    )*
+	//        params+=Param*
 	//    '}'
 	//;
 	public TaskElements getTaskAccess() {
@@ -1011,7 +975,7 @@ public class MLDSLGrammarAccess extends AbstractElementFinder.AbstractGrammarEle
 	
 	//Param:
 	//    ('param' name=ID '=' (paramValue=ParamValue) ';' )|
-	//    ('param' name=ID '=' (networkValue=[WorkflowEntinty]) ';')
+	//    ('param' name=ID '=' (entityValue=[WorkflowEntinty]) ';')
 	//;
 	public ParamElements getParamAccess() {
 		return pParam;

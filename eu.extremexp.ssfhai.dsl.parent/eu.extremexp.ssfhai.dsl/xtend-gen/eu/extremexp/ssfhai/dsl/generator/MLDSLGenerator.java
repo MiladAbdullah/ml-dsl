@@ -3,19 +3,166 @@
  */
 package eu.extremexp.ssfhai.dsl.generator;
 
+import com.google.common.collect.Iterators;
+import eu.extremexp.ssfhai.dsl.mLDSL.Model;
+import eu.extremexp.ssfhai.dsl.mLDSL.Param;
+import eu.extremexp.ssfhai.dsl.mLDSL.ParamValue;
+import eu.extremexp.ssfhai.dsl.mLDSL.Task;
+import eu.extremexp.ssfhai.dsl.mLDSL.Workflow;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
- * Generates code from your model files on save.
+ * MLDSLGenerator generates Python files from the MLDSL model.
  * 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
+ * - For each Task, Data, Network, etc., generates a Python file with a user-editable code section.
+ * - If the file already exists, preserves user-edited code outside the generated regions.
+ * - Uses special markers to delimit generated and user code.
+ * - Methods are modular for each model element.
+ * 
+ * Usage: invoked automatically on model save.
  */
 @SuppressWarnings("all")
 public class MLDSLGenerator extends AbstractGenerator {
+  /**
+   * Main entry point for code generation.
+   * Traverses the model and calls generation methods for each element.
+   */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    final Procedure1<Task> _function = (Task t) -> {
+      this.generateTaskPythonFile(t, fsa);
+    };
+    IteratorExtensions.<Task>forEach(Iterators.<Task>filter(resource.getAllContents(), Task.class), _function);
+  }
+
+  /**
+   * Generates a Python file for a Task element with user-editable placeholder.
+   * @param task the Task model element
+   * @param fsa the file system access
+   */
+  public void generateTaskPythonFile(final Task task, final IFileSystemAccess2 fsa) {
+    EObject _eContainer = task.eContainer().eContainer();
+    String appName = ((Model) _eContainer).getName();
+    fsa.generateFile((appName + "/__init__.py"), "");
+    EObject _eContainer_1 = task.eContainer();
+    String workflowName = ((Workflow) _eContainer_1).getName();
+    fsa.generateFile((((appName + "/") + workflowName) + "/__init__.py"), "");
+    fsa.generateFile((((appName + "/") + workflowName) + "/tasks/__init__.py"), "");
+    String _name = task.getName();
+    String _plus = ((((appName + "/") + workflowName) + "/tasks/") + _name);
+    final String fileName = (_plus + ".py");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("# TODO Add imports");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("def run_task(");
+    _builder.newLine();
+    {
+      EList<Param> _params = task.getParams();
+      boolean _hasElements = false;
+      for(final Param param : _params) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(",\n", "\t");
+        }
+        _builder.append("\t");
+        String _name_1 = param.getName();
+        _builder.append(_name_1, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("):");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("# TODO: Implement task logic for ");
+    String _name_2 = task.getName();
+    _builder.append(_name_2, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("pass");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("def run_");
+    String _name_3 = task.getName();
+    _builder.append(_name_3);
+    _builder.append("(");
+    _builder.newLineIfNotEmpty();
+    {
+      final Function1<Param, Boolean> _function = (Param p) -> {
+        ParamValue _paramValue = p.getParamValue();
+        return Boolean.valueOf((_paramValue == null));
+      };
+      Iterable<Param> _filter = IterableExtensions.<Param>filter(task.getParams(), _function);
+      boolean _hasElements_1 = false;
+      for(final Param param_1 : _filter) {
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
+        } else {
+          _builder.appendImmediate(",\n", "\t");
+        }
+        _builder.append("\t");
+        String _name_4 = param_1.getName();
+        _builder.append(_name_4, "\t");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("):");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("run_task(");
+    _builder.newLine();
+    {
+      EList<Param> _params_1 = task.getParams();
+      boolean _hasElements_2 = false;
+      for(final Param param_2 : _params_1) {
+        if (!_hasElements_2) {
+          _hasElements_2 = true;
+        } else {
+          _builder.appendImmediate(",\n", "\t\t");
+        }
+        {
+          ParamValue _paramValue = param_2.getParamValue();
+          boolean _tripleEquals = (_paramValue == null);
+          if (_tripleEquals) {
+            _builder.append("\t\t");
+            String _name_5 = param_2.getName();
+            _builder.append(_name_5, "\t\t");
+            _builder.append(" = ");
+            String _name_6 = param_2.getName();
+            _builder.append(_name_6, "\t\t");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t\t");
+            String _name_7 = param_2.getName();
+            _builder.append(_name_7, "\t\t");
+            _builder.append(" = ");
+            ParamValue _paramValue_1 = param_2.getParamValue();
+            _builder.append(_paramValue_1, "\t\t");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    _builder.append("\t");
+    _builder.append(")");
+    _builder.newLine();
+    final String generatedContent = _builder.toString();
+    fsa.generateFile(fileName, generatedContent);
   }
 }

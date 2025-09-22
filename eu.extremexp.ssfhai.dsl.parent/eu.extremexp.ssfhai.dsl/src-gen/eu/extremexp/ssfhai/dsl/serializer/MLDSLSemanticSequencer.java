@@ -227,7 +227,7 @@ public class MLDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Param returns Param
 	 *
 	 * Constraint:
-	 *     ((name=ID paramValue=ParamValue) | (name=ID networkValue=[WorkflowEntinty|ID]))
+	 *     ((name=ID paramValue=ParamValue) | (name=ID entityValue=[WorkflowEntinty|ID]))
 	 * </pre>
 	 */
 	protected void sequence_Param(ISerializationContext context, Param semanticObject) {
@@ -242,7 +242,7 @@ public class MLDSLSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     WorkflowEntinty returns Task
 	 *
 	 * Constraint:
-	 *     (name=ID (source=STRING | params+=Param)*)
+	 *     (name=ID params+=Param*)
 	 * </pre>
 	 */
 	protected void sequence_Task(ISerializationContext context, Task semanticObject) {

@@ -262,22 +262,13 @@ public interface MLDSLPackage extends EPackage
   int TASK__NAME = WORKFLOW_ENTINTY__NAME;
 
   /**
-   * The feature id for the '<em><b>Source</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK__SOURCE = WORKFLOW_ENTINTY_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK__PARAMS = WORKFLOW_ENTINTY_FEATURE_COUNT + 1;
+  int TASK__PARAMS = WORKFLOW_ENTINTY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Task</em>' class.
@@ -286,7 +277,7 @@ public interface MLDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_FEATURE_COUNT = WORKFLOW_ENTINTY_FEATURE_COUNT + 2;
+  int TASK_FEATURE_COUNT = WORKFLOW_ENTINTY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.ParamImpl <em>Param</em>}' class.
@@ -317,13 +308,13 @@ public interface MLDSLPackage extends EPackage
   int PARAM__PARAM_VALUE = 1;
 
   /**
-   * The feature id for the '<em><b>Network Value</b></em>' reference.
+   * The feature id for the '<em><b>Entity Value</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARAM__NETWORK_VALUE = 2;
+  int PARAM__ENTITY_VALUE = 2;
 
   /**
    * The number of structural features of the '<em>Param</em>' class.
@@ -791,17 +782,6 @@ public interface MLDSLPackage extends EPackage
   EClass getTask();
 
   /**
-   * Returns the meta object for the attribute '{@link eu.extremexp.ssfhai.dsl.mLDSL.Task#getSource <em>Source</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Source</em>'.
-   * @see eu.extremexp.ssfhai.dsl.mLDSL.Task#getSource()
-   * @see #getTask()
-   * @generated
-   */
-  EAttribute getTask_Source();
-
-  /**
    * Returns the meta object for the containment reference list '{@link eu.extremexp.ssfhai.dsl.mLDSL.Task#getParams <em>Params</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -866,15 +846,15 @@ public interface MLDSLPackage extends EPackage
   EReference getParam_ParamValue();
 
   /**
-   * Returns the meta object for the reference '{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getNetworkValue <em>Network Value</em>}'.
+   * Returns the meta object for the reference '{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getEntityValue <em>Entity Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Network Value</em>'.
-   * @see eu.extremexp.ssfhai.dsl.mLDSL.Param#getNetworkValue()
+   * @return the meta object for the reference '<em>Entity Value</em>'.
+   * @see eu.extremexp.ssfhai.dsl.mLDSL.Param#getEntityValue()
    * @see #getParam()
    * @generated
    */
-  EReference getParam_NetworkValue();
+  EReference getParam_EntityValue();
 
   /**
    * Returns the meta object for class '{@link eu.extremexp.ssfhai.dsl.mLDSL.Flow <em>Flow</em>}'.
@@ -1287,14 +1267,6 @@ public interface MLDSLPackage extends EPackage
     EClass TASK = eINSTANCE.getTask();
 
     /**
-     * The meta object literal for the '<em><b>Source</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TASK__SOURCE = eINSTANCE.getTask_Source();
-
-    /**
      * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1347,12 +1319,12 @@ public interface MLDSLPackage extends EPackage
     EReference PARAM__PARAM_VALUE = eINSTANCE.getParam_ParamValue();
 
     /**
-     * The meta object literal for the '<em><b>Network Value</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Entity Value</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PARAM__NETWORK_VALUE = eINSTANCE.getParam_NetworkValue();
+    EReference PARAM__ENTITY_VALUE = eINSTANCE.getParam_EntityValue();
 
     /**
      * The meta object literal for the '{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.FlowImpl <em>Flow</em>}' class.

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getName <em>Name</em>}</li>
  *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getParamValue <em>Param Value</em>}</li>
- *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getNetworkValue <em>Network Value</em>}</li>
+ *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getEntityValue <em>Entity Value</em>}</li>
  * </ul>
  *
  * @see eu.extremexp.ssfhai.dsl.mLDSL.MLDSLPackage#getParam()
@@ -70,25 +70,25 @@ public interface Param extends EObject
   void setParamValue(ParamValue value);
 
   /**
-   * Returns the value of the '<em><b>Network Value</b></em>' reference.
+   * Returns the value of the '<em><b>Entity Value</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Network Value</em>' reference.
-   * @see #setNetworkValue(WorkflowEntinty)
-   * @see eu.extremexp.ssfhai.dsl.mLDSL.MLDSLPackage#getParam_NetworkValue()
+   * @return the value of the '<em>Entity Value</em>' reference.
+   * @see #setEntityValue(WorkflowEntinty)
+   * @see eu.extremexp.ssfhai.dsl.mLDSL.MLDSLPackage#getParam_EntityValue()
    * @model
    * @generated
    */
-  WorkflowEntinty getNetworkValue();
+  WorkflowEntinty getEntityValue();
 
   /**
-   * Sets the value of the '{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getNetworkValue <em>Network Value</em>}' reference.
+   * Sets the value of the '{@link eu.extremexp.ssfhai.dsl.mLDSL.Param#getEntityValue <em>Entity Value</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Network Value</em>' reference.
-   * @see #getNetworkValue()
+   * @param value the new value of the '<em>Entity Value</em>' reference.
+   * @see #getEntityValue()
    * @generated
    */
-  void setNetworkValue(WorkflowEntinty value);
+  void setEntityValue(WorkflowEntinty value);
 
 } // Param

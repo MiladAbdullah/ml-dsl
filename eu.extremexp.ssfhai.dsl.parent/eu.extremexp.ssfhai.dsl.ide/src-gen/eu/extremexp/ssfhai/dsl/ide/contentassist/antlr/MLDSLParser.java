@@ -32,7 +32,6 @@ public class MLDSLParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MLDSLGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getWorkflowAccess().getAlternatives_3(), "rule__Workflow__Alternatives_3");
-			builder.put(grammarAccess.getTaskAccess().getAlternatives_3(), "rule__Task__Alternatives_3");
 			builder.put(grammarAccess.getWorkflowEntintyAccess().getAlternatives(), "rule__WorkflowEntinty__Alternatives");
 			builder.put(grammarAccess.getParamAccess().getAlternatives(), "rule__Param__Alternatives");
 			builder.put(grammarAccess.getNetworkAccess().getAlternatives_3(), "rule__Network__Alternatives_3");
@@ -45,7 +44,6 @@ public class MLDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDataAccess().getGroup_1(), "rule__Data__Group_1__0");
 			builder.put(grammarAccess.getDataAccess().getGroup_2(), "rule__Data__Group_2__0");
 			builder.put(grammarAccess.getTaskAccess().getGroup(), "rule__Task__Group__0");
-			builder.put(grammarAccess.getTaskAccess().getGroup_3_0(), "rule__Task__Group_3_0__0");
 			builder.put(grammarAccess.getParamAccess().getGroup_0(), "rule__Param__Group_0__0");
 			builder.put(grammarAccess.getParamAccess().getGroup_1(), "rule__Param__Group_1__0");
 			builder.put(grammarAccess.getFlowAccess().getGroup(), "rule__Flow__Group__0");
@@ -73,12 +71,11 @@ public class MLDSLParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getDataAccess().getFeaturesAssignment_1_1(), "rule__Data__FeaturesAssignment_1_1");
 			builder.put(grammarAccess.getDataAccess().getTargetAssignment_2_1(), "rule__Data__TargetAssignment_2_1");
 			builder.put(grammarAccess.getTaskAccess().getNameAssignment_1(), "rule__Task__NameAssignment_1");
-			builder.put(grammarAccess.getTaskAccess().getSourceAssignment_3_0_1(), "rule__Task__SourceAssignment_3_0_1");
-			builder.put(grammarAccess.getTaskAccess().getParamsAssignment_3_1(), "rule__Task__ParamsAssignment_3_1");
+			builder.put(grammarAccess.getTaskAccess().getParamsAssignment_3(), "rule__Task__ParamsAssignment_3");
 			builder.put(grammarAccess.getParamAccess().getNameAssignment_0_1(), "rule__Param__NameAssignment_0_1");
 			builder.put(grammarAccess.getParamAccess().getParamValueAssignment_0_3(), "rule__Param__ParamValueAssignment_0_3");
 			builder.put(grammarAccess.getParamAccess().getNameAssignment_1_1(), "rule__Param__NameAssignment_1_1");
-			builder.put(grammarAccess.getParamAccess().getNetworkValueAssignment_1_3(), "rule__Param__NetworkValueAssignment_1_3");
+			builder.put(grammarAccess.getParamAccess().getEntityValueAssignment_1_3(), "rule__Param__EntityValueAssignment_1_3");
 			builder.put(grammarAccess.getFlowAccess().getSequenceStartAssignment_0(), "rule__Flow__SequenceStartAssignment_0");
 			builder.put(grammarAccess.getFlowAccess().getSequenceAssignment_1_1(), "rule__Flow__SequenceAssignment_1_1");
 			builder.put(grammarAccess.getNetworkAccess().getNameAssignment_1(), "rule__Network__NameAssignment_1");

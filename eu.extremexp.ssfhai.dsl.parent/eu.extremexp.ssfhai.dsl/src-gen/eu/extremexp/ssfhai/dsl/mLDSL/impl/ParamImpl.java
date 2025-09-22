@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.ParamImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.ParamImpl#getParamValue <em>Param Value</em>}</li>
- *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.ParamImpl#getNetworkValue <em>Network Value</em>}</li>
+ *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.ParamImpl#getEntityValue <em>Entity Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,14 +65,14 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
   protected ParamValue paramValue;
 
   /**
-   * The cached value of the '{@link #getNetworkValue() <em>Network Value</em>}' reference.
+   * The cached value of the '{@link #getEntityValue() <em>Entity Value</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getNetworkValue()
+   * @see #getEntityValue()
    * @generated
    * @ordered
    */
-  protected WorkflowEntinty networkValue;
+  protected WorkflowEntinty entityValue;
 
   /**
    * <!-- begin-user-doc -->
@@ -176,19 +176,19 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    */
   @Override
-  public WorkflowEntinty getNetworkValue()
+  public WorkflowEntinty getEntityValue()
   {
-    if (networkValue != null && networkValue.eIsProxy())
+    if (entityValue != null && entityValue.eIsProxy())
     {
-      InternalEObject oldNetworkValue = (InternalEObject)networkValue;
-      networkValue = (WorkflowEntinty)eResolveProxy(oldNetworkValue);
-      if (networkValue != oldNetworkValue)
+      InternalEObject oldEntityValue = (InternalEObject)entityValue;
+      entityValue = (WorkflowEntinty)eResolveProxy(oldEntityValue);
+      if (entityValue != oldEntityValue)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MLDSLPackage.PARAM__NETWORK_VALUE, oldNetworkValue, networkValue));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MLDSLPackage.PARAM__ENTITY_VALUE, oldEntityValue, entityValue));
       }
     }
-    return networkValue;
+    return entityValue;
   }
 
   /**
@@ -196,9 +196,9 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * <!-- end-user-doc -->
    * @generated
    */
-  public WorkflowEntinty basicGetNetworkValue()
+  public WorkflowEntinty basicGetEntityValue()
   {
-    return networkValue;
+    return entityValue;
   }
 
   /**
@@ -207,12 +207,12 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
    * @generated
    */
   @Override
-  public void setNetworkValue(WorkflowEntinty newNetworkValue)
+  public void setEntityValue(WorkflowEntinty newEntityValue)
   {
-    WorkflowEntinty oldNetworkValue = networkValue;
-    networkValue = newNetworkValue;
+    WorkflowEntinty oldEntityValue = entityValue;
+    entityValue = newEntityValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MLDSLPackage.PARAM__NETWORK_VALUE, oldNetworkValue, networkValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, MLDSLPackage.PARAM__ENTITY_VALUE, oldEntityValue, entityValue));
   }
 
   /**
@@ -245,9 +245,9 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
         return getName();
       case MLDSLPackage.PARAM__PARAM_VALUE:
         return getParamValue();
-      case MLDSLPackage.PARAM__NETWORK_VALUE:
-        if (resolve) return getNetworkValue();
-        return basicGetNetworkValue();
+      case MLDSLPackage.PARAM__ENTITY_VALUE:
+        if (resolve) return getEntityValue();
+        return basicGetEntityValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -268,8 +268,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case MLDSLPackage.PARAM__PARAM_VALUE:
         setParamValue((ParamValue)newValue);
         return;
-      case MLDSLPackage.PARAM__NETWORK_VALUE:
-        setNetworkValue((WorkflowEntinty)newValue);
+      case MLDSLPackage.PARAM__ENTITY_VALUE:
+        setEntityValue((WorkflowEntinty)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -291,8 +291,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
       case MLDSLPackage.PARAM__PARAM_VALUE:
         setParamValue((ParamValue)null);
         return;
-      case MLDSLPackage.PARAM__NETWORK_VALUE:
-        setNetworkValue((WorkflowEntinty)null);
+      case MLDSLPackage.PARAM__ENTITY_VALUE:
+        setEntityValue((WorkflowEntinty)null);
         return;
     }
     super.eUnset(featureID);
@@ -312,8 +312,8 @@ public class ParamImpl extends MinimalEObjectImpl.Container implements Param
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MLDSLPackage.PARAM__PARAM_VALUE:
         return paramValue != null;
-      case MLDSLPackage.PARAM__NETWORK_VALUE:
-        return networkValue != null;
+      case MLDSLPackage.PARAM__ENTITY_VALUE:
+        return entityValue != null;
     }
     return super.eIsSet(featureID);
   }

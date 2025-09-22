@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.Task#getSource <em>Source</em>}</li>
  *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.Task#getParams <em>Params</em>}</li>
  * </ul>
  *
@@ -24,28 +23,6 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Task extends WorkflowEntinty
 {
-  /**
-   * Returns the value of the '<em><b>Source</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Source</em>' attribute.
-   * @see #setSource(String)
-   * @see eu.extremexp.ssfhai.dsl.mLDSL.MLDSLPackage#getTask_Source()
-   * @model
-   * @generated
-   */
-  String getSource();
-
-  /**
-   * Sets the value of the '{@link eu.extremexp.ssfhai.dsl.mLDSL.Task#getSource <em>Source</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Source</em>' attribute.
-   * @see #getSource()
-   * @generated
-   */
-  void setSource(String value);
-
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference list.
    * The list contents are of type {@link eu.extremexp.ssfhai.dsl.mLDSL.Param}.

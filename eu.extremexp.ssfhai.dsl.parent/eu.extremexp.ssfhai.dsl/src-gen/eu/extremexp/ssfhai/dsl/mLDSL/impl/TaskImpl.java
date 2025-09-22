@@ -9,15 +9,12 @@ import eu.extremexp.ssfhai.dsl.mLDSL.Task;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -30,7 +27,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.TaskImpl#getSource <em>Source</em>}</li>
  *   <li>{@link eu.extremexp.ssfhai.dsl.mLDSL.impl.TaskImpl#getParams <em>Params</em>}</li>
  * </ul>
  *
@@ -38,26 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class TaskImpl extends WorkflowEntintyImpl implements Task
 {
-  /**
-   * The default value of the '{@link #getSource() <em>Source</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSource()
-   * @generated
-   * @ordered
-   */
-  protected static final String SOURCE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getSource() <em>Source</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getSource()
-   * @generated
-   * @ordered
-   */
-  protected String source = SOURCE_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -87,31 +63,6 @@ public class TaskImpl extends WorkflowEntintyImpl implements Task
   protected EClass eStaticClass()
   {
     return MLDSLPackage.Literals.TASK;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getSource()
-  {
-    return source;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setSource(String newSource)
-  {
-    String oldSource = source;
-    source = newSource;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MLDSLPackage.TASK__SOURCE, oldSource, source));
   }
 
   /**
@@ -155,8 +106,6 @@ public class TaskImpl extends WorkflowEntintyImpl implements Task
   {
     switch (featureID)
     {
-      case MLDSLPackage.TASK__SOURCE:
-        return getSource();
       case MLDSLPackage.TASK__PARAMS:
         return getParams();
     }
@@ -174,9 +123,6 @@ public class TaskImpl extends WorkflowEntintyImpl implements Task
   {
     switch (featureID)
     {
-      case MLDSLPackage.TASK__SOURCE:
-        setSource((String)newValue);
-        return;
       case MLDSLPackage.TASK__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends Param>)newValue);
@@ -195,9 +141,6 @@ public class TaskImpl extends WorkflowEntintyImpl implements Task
   {
     switch (featureID)
     {
-      case MLDSLPackage.TASK__SOURCE:
-        setSource(SOURCE_EDEFAULT);
-        return;
       case MLDSLPackage.TASK__PARAMS:
         getParams().clear();
         return;
@@ -215,29 +158,10 @@ public class TaskImpl extends WorkflowEntintyImpl implements Task
   {
     switch (featureID)
     {
-      case MLDSLPackage.TASK__SOURCE:
-        return SOURCE_EDEFAULT == null ? source != null : !SOURCE_EDEFAULT.equals(source);
       case MLDSLPackage.TASK__PARAMS:
         return params != null && !params.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (source: ");
-    result.append(source);
-    result.append(')');
-    return result.toString();
   }
 
 } //TaskImpl

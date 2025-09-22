@@ -355,20 +355,9 @@ public class MLDSLPackageImpl extends EPackageImpl implements MLDSLPackage
    * @generated
    */
   @Override
-  public EAttribute getTask_Source()
-  {
-    return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getTask_Params()
   {
-    return (EReference)taskEClass.getEStructuralFeatures().get(1);
+    return (EReference)taskEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -432,7 +421,7 @@ public class MLDSLPackageImpl extends EPackageImpl implements MLDSLPackage
    * @generated
    */
   @Override
-  public EReference getParam_NetworkValue()
+  public EReference getParam_EntityValue()
   {
     return (EReference)paramEClass.getEStructuralFeatures().get(2);
   }
@@ -760,7 +749,6 @@ public class MLDSLPackageImpl extends EPackageImpl implements MLDSLPackage
     createEAttribute(dataEClass, DATA__TARGET);
 
     taskEClass = createEClass(TASK);
-    createEAttribute(taskEClass, TASK__SOURCE);
     createEReference(taskEClass, TASK__PARAMS);
 
     workflowEntintyEClass = createEClass(WORKFLOW_ENTINTY);
@@ -769,7 +757,7 @@ public class MLDSLPackageImpl extends EPackageImpl implements MLDSLPackage
     paramEClass = createEClass(PARAM);
     createEAttribute(paramEClass, PARAM__NAME);
     createEReference(paramEClass, PARAM__PARAM_VALUE);
-    createEReference(paramEClass, PARAM__NETWORK_VALUE);
+    createEReference(paramEClass, PARAM__ENTITY_VALUE);
 
     flowEClass = createEClass(FLOW);
     createEReference(flowEClass, FLOW__SEQUENCE_START);
@@ -857,7 +845,6 @@ public class MLDSLPackageImpl extends EPackageImpl implements MLDSLPackage
     initEAttribute(getData_Target(), ecorePackage.getEString(), "target", null, 0, 1, Data.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTask_Source(), ecorePackage.getEString(), "source", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTask_Params(), this.getParam(), null, "params", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(workflowEntintyEClass, WorkflowEntinty.class, "WorkflowEntinty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -866,7 +853,7 @@ public class MLDSLPackageImpl extends EPackageImpl implements MLDSLPackage
     initEClass(paramEClass, Param.class, "Param", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParam_Name(), ecorePackage.getEString(), "name", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getParam_ParamValue(), this.getParamValue(), null, "paramValue", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParam_NetworkValue(), this.getWorkflowEntinty(), null, "networkValue", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParam_EntityValue(), this.getWorkflowEntinty(), null, "entityValue", null, 0, 1, Param.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(flowEClass, Flow.class, "Flow", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFlow_SequenceStart(), this.getTask(), null, "sequenceStart", null, 0, 1, Flow.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
