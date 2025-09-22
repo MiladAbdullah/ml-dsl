@@ -24,6 +24,6 @@ hs_err_pid*
 replay_pid*
 /.metadata/
 
-**/node_modules/
-**/xtend-gen/
-/**src-gen/
+**/node_modules/*
+**/xtend-gen/*
+**/src-gen/*
