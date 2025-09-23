@@ -10,11 +10,21 @@ Welcome to ML-DSL, a domain-specific language and VS Code extension for describi
 
 ## Quick Start
 
-### 1. Run the Language Server (JAR)
+### 1. Build and Run the Language Server
 
-Open a terminal and run the language server JAR (replace the version if needed):
+First, build the project and the language server using Maven:
 
 ```sh
+cd eu.extremexp.ssfhai.dsl.parent
+mvn clean install
+cd ../eu.extremexp.ssfhai.dsl.ide
+mvn install -Plang-server
+```
+
+Then, run the language server JAR (replace the version if needed). Open a **new terminal** for this:
+
+```sh
+cd eu.extremexp.ssfhai.dsl.ide/target
 java -jar eu.extremexp.ssfhai.dsl.ide-1.0.0-SNAPSHOT-ls.jar
 ```
 
