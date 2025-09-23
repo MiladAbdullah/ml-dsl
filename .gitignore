@@ -25,5 +25,5 @@ replay_pid*
 /.metadata/
 
 **/node_modules/*
-**/xtend-gen/*
-**/src-gen/*
+**/xtend-gen/**
+**/src-gen/**

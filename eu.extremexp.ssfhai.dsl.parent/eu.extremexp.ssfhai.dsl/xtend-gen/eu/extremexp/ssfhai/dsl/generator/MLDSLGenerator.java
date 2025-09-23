@@ -4,6 +4,7 @@
 package eu.extremexp.ssfhai.dsl.generator;
 
 import com.google.common.collect.Iterators;
+import eu.extremexp.ssfhai.dsl.mLDSL.FLOAT;
 import eu.extremexp.ssfhai.dsl.mLDSL.Model;
 import eu.extremexp.ssfhai.dsl.mLDSL.Param;
 import eu.extremexp.ssfhai.dsl.mLDSL.ParamValue;
@@ -148,13 +149,47 @@ public class MLDSLGenerator extends AbstractGenerator {
             _builder.append(_name_6, "\t\t");
             _builder.newLineIfNotEmpty();
           } else {
-            _builder.append("\t\t");
-            String _name_7 = param_2.getName();
-            _builder.append(_name_7, "\t\t");
-            _builder.append(" = ");
-            ParamValue _paramValue_1 = param_2.getParamValue();
-            _builder.append(_paramValue_1, "\t\t");
-            _builder.newLineIfNotEmpty();
+            {
+              FLOAT _floatValue = param_2.getParamValue().getFloatValue();
+              boolean _tripleNotEquals = (_floatValue != null);
+              if (_tripleNotEquals) {
+                _builder.append("\t\t");
+                String _name_7 = param_2.getName();
+                _builder.append(_name_7, "\t\t");
+                _builder.append(" = ");
+                int _dec = param_2.getParamValue().getFloatValue().getDec();
+                _builder.append(_dec, "\t\t");
+                _builder.append(".");
+                int _per = param_2.getParamValue().getFloatValue().getPer();
+                _builder.append(_per, "\t\t");
+                _builder.newLineIfNotEmpty();
+              } else {
+                _builder.append("\t\t");
+                _builder.newLine();
+                {
+                  String _stringValue = param_2.getParamValue().getStringValue();
+                  boolean _tripleNotEquals_1 = (_stringValue != null);
+                  if (_tripleNotEquals_1) {
+                    _builder.append("\t\t");
+                    String _name_8 = param_2.getName();
+                    _builder.append(_name_8, "\t\t");
+                    _builder.append(" = \"");
+                    String _stringValue_1 = param_2.getParamValue().getStringValue();
+                    _builder.append(_stringValue_1, "\t\t");
+                    _builder.append("\"");
+                    _builder.newLineIfNotEmpty();
+                  } else {
+                    _builder.append("\t\t");
+                    String _name_9 = param_2.getName();
+                    _builder.append(_name_9, "\t\t");
+                    _builder.append(" = ");
+                    int _intValue = param_2.getParamValue().getIntValue();
+                    _builder.append(_intValue, "\t\t");
+                    _builder.newLineIfNotEmpty();
+                  }
+                }
+              }
+            }
           }
         }
       }

@@ -75,8 +75,17 @@ def run_«task.name»(
 		«FOR param : task.params SEPARATOR ',\n'» 
 			«IF param.paramValue === null»
 			«param.name» = «param.name»
+			«ELSE»			
+			«IF param.paramValue.floatValue !== null»
+				«param.name» = «param.paramValue.floatValue.dec».«param.paramValue.floatValue.per»
 			«ELSE»
-			«param.name» = «param.paramValue»
+				
+				«IF param.paramValue.stringValue !== null»
+					«param.name» = "«param.paramValue.stringValue»"
+					«ELSE»
+					«param.name» = «param.paramValue.intValue»
+				«ENDIF»
+			«ENDIF»
 			«ENDIF»
 		«ENDFOR»
 	)

@@ -24,6 +24,7 @@ Open a new terminal, then:
 
 ```sh
 cd vs-code
+npm install
 code .
 ```
 
